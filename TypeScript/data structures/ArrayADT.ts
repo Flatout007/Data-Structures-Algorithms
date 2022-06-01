@@ -2,8 +2,8 @@ class ArrayADT {
 
     length: number;
 
-    constructor() {
-        this.length;
+    constructor(length: number) {
+        this.length = length;
     }
 
     display(): void {
@@ -44,17 +44,17 @@ class ArrayADT {
 
     get(index: number): number {
 
-        if(index < this.length && index >= 0)
+        if (index < this.length && index >= 0)
             return this[index];
 
-        return -1;    
+        return -1;
     }
 
     search(key: number): number {
 
-        for(let i: number = 0; i<this.length; i++) {
+        for (let i: number = 0; i < this.length; i++) {
 
-            if(this[i] === key)
+            if (this[i] === key)
                 return i;
         }
 
@@ -63,17 +63,25 @@ class ArrayADT {
 
     set(index: number, value: number): void {
 
-        if(index < this.length && index >= 0)
+        if (index < this.length && index >= 0)
             this[index] = value;
-        
-        this.display();    
+
+        this.display();
+    }
+
+    reverse(): void {
+        for (let i: number = 0, j = this.length - 1; i < j; i++, j--) {
+
+            let elementA: number = this[i], elementB = this[j];
+            this[i] = elementB; this[j] = elementA;
+        }
     }
 
 }
 
 function init(): void {
 
-    const arr: ArrayADT = new ArrayADT();
+    const arr: ArrayADT = new ArrayADT(0);
     let count: number = 0;
 
     for (let i: number = 0; i < 5; i++)
@@ -82,6 +90,7 @@ function init(): void {
 
     arr.append(10);
     arr.insert(3, 1000);
-    arr.delete(3);
+    arr.display();
+    arr.reverse();
     arr.display();
 } init();

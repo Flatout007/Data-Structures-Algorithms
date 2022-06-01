@@ -1,10 +1,10 @@
 var ArrayADT = /** @class */ (function () {
-    function ArrayADT() {
-        this.length;
+    function ArrayADT(length) {
+        this.length = length;
     }
     ArrayADT.prototype.display = function () {
         for (var i = 0; i < this.length; i++)
-            console.log(this[i]);
+            process.stdout.write(`${this[i]} `);
     };
     ArrayADT.prototype.append = function (value) {
         this[this.length] = value;
@@ -41,17 +41,26 @@ var ArrayADT = /** @class */ (function () {
             this[index] = value;
         this.display();
     };
+    ArrayADT.prototype.reverse = function () {
+        for (var i = 0, j = this.length - 1; i < j; i++, j--) {
+            var elementA = this[i], elementB = this[j];
+            this[i] = elementB;
+            this[j] = elementA;
+        }
+    };
     return ArrayADT;
 }());
 function init() {
-    var arr = new ArrayADT();
+    var arr = new ArrayADT(0);
     var count = 0;
     for (var i = 0; i < 5; i++)
         arr[i] = ++count;
     arr.length = 5;
     arr.append(10);
     arr.insert(3, 1000);
-    arr["delete"](3);
+    arr.display();
+    arr.reverse();
+    console.log("\n");
     arr.display();
 }
 init();

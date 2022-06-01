@@ -41,27 +41,27 @@ void insert(struct Array *arr, int index, int value)
     arr->length++;
 }
 
-int delete(struct Array *arr, int index)
-{   
+int delete (struct Array *arr, int index)
+{
     int *A = arr->A;
     int element = A[index];
 
-    for(int i = index; i<arr->length-1; i++)
-        A[i] = A[i+1];
+    for (int i = index; i < arr->length - 1; i++)
+        A[i] = A[i + 1];
 
     arr->length--;
 
-    return element;    
+    return element;
 }
 
-int search(struct Array arr, int key) 
+int search(struct Array arr, int key)
 {
     int *A = arr.A;
 
-    for(int i = 0; i<arr.length; i++)
+    for (int i = 0; i < arr.length; i++)
     {
-        if(A[i] == key)
-            return i;    
+        if (A[i] == key)
+            return i;
     }
 
     return -1;
@@ -69,18 +69,29 @@ int search(struct Array arr, int key)
 
 int get(int *A, int index)
 {
-    if(index >= 0 && index < n)
+    if (index >= 0 && index < n)
         return A[index];
 
-    return -1;      
+    return -1;
 }
 
 void set(int *A, int index, int value, int n)
 {
-    if(index >= 0 && index < n)
+    if (index >= 0 && index < n)
         A[index] = value;
 
-    display(A, n);    
+    display(A, n);
+}
+
+void reverse(int *A, int n)
+{
+    for(int i = 0, j = n-1; i<=j; i++, j--)
+    {
+        int element_a = A[i];
+        int element_b = A[j];
+
+        A[j] = element_a; A[i] = element_b;
+    }
 }
 
 int main()
@@ -100,8 +111,7 @@ int main()
     append(&arr, 5);
     insert(&arr, 6, 100);
     display(A, arr.length);
-    printf("\n");
-    set(A, 2, 100, arr.length);
+    reverse(A, arr.length);
 
     return 0;
 }

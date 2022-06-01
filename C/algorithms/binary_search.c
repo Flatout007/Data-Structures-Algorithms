@@ -12,7 +12,7 @@ const int a[6] = {9, 10, 20, 100, 300, 1000};
  *
  * @details {
  *    Given array a; write a program that searches for a target.
- *    The program must run in O(log(n)) time;
+ *    The program must run in O(log n) time;
  * }
  */
 
@@ -54,7 +54,7 @@ int binary_search(int target)
 
 int main()
 {
-    
+
     printf("%d ", binary_search(9));
 
     return 0;
